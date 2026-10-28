@@ -87,13 +87,9 @@
         }
 
         .sticker-item {
-            cursor: grab;
+            cursor: move;
             user-select: none;
             touch-action: none;
-        }
-
-        .sticker-item:active {
-            cursor: grabbing;
         }
 
         ::-webkit-scrollbar { width: 6px; }
@@ -146,12 +142,20 @@
             </div>
         </div>
 
+        <!-- Sub-Category Selector for Roast -->
+        <div id="roastCategorySelector" class="w-full flex items-center justify-center gap-1.5 mb-4 overflow-x-auto pb-1">
+            <button class="roast-cat-btn px-3 py-1.5 rounded-xl text-xs font-extrabold bg-cyber-neonPink text-white border border-cyber-neonPink transition shadow-md" data-cat="savage">💀 Savage</button>
+            <button class="roast-cat-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white/5 text-gray-300 border border-white/10 hover:border-white/30 transition" data-cat="outfit">👔 Outfit & Drip</button>
+            <button class="roast-cat-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white/5 text-gray-300 border border-white/10 hover:border-white/30 transition" data-cat="psyche">🧠 Psyche & Aura</button>
+            <button class="roast-cat-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white/5 text-gray-300 border border-white/10 hover:border-white/30 transition" data-cat="genz">🧢 Gen-Z Slang</button>
+        </div>
+
         <!-- ================= STEP 1: UPLOAD & PRESETS ================= -->
         <section id="uploadSection" class="w-full flex flex-col items-center transition-all duration-500">
             <!-- Hero Title -->
             <div class="text-center mb-6">
                 <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyber-neonPurple/20 border border-cyber-neonPurple/40 text-cyber-neonCyan text-xs font-bold uppercase tracking-widest mb-2 animate-float">
-                    <i data-lucide="zap" class="w-3.5 h-3.5 text-cyber-neonYellow"></i> Viral TikTok Analyzer
+                    <i data-lucide="zap" class="w-3.5 h-3.5 text-cyber-neonYellow"></i> Viral TikTok Analyzer 2026
                 </div>
                 <h1 id="heroTitle" class="text-3xl sm:text-4xl font-black tracking-tight mb-2">
                     Wie ist dein <span class="gradient-text">Vibe heute?</span>
@@ -164,28 +168,28 @@
             <!-- SINGLE UPLOAD BOX -->
             <div id="singleUploadBox" class="w-full">
                 <div id="dropZoneSingle" class="w-full glass-panel rounded-3xl p-6 sm:p-8 flex flex-col items-center justify-center text-center border-2 border-dashed border-cyber-neonCyan/40 hover:border-cyber-neonCyan transition cursor-pointer relative overflow-hidden group shadow-2xl">
-                    <input type="file" id="fileInputSingle" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-20">
+                    <input type="file" id="fileInputSingle" accept="image/*" class="hidden">
                     
-                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-cyber-neonPink/20 to-cyber-neonCyan/20 border border-cyber-neonCyan/40 flex items-center justify-center mb-3 group-hover:scale-110 transition duration-300">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-cyber-neonPink/20 to-cyber-neonCyan/20 border border-cyber-neonCyan/40 flex items-center justify-center mb-3 group-hover:scale-110 transition duration-300 pointer-events-none">
                         <i data-lucide="camera" class="w-8 h-8 text-cyber-neonCyan"></i>
                     </div>
                     
-                    <h3 class="text-lg font-bold text-white mb-1">Foto hochladen</h3>
-                    <p class="text-xs text-gray-400 mb-3">Outfit, Selfie, Vibe oder Snack</p>
+                    <h3 class="text-lg font-bold text-white mb-1 pointer-events-none">Foto hochladen</h3>
+                    <p class="text-xs text-gray-400 mb-3 pointer-events-none">Klicken oder Datei hierher ziehen</p>
                     
-                    <span class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyber-neonPink to-cyber-neonPurple text-white font-bold text-xs shadow-lg shadow-cyber-neonPink/30 group-hover:shadow-cyber-neonPink/50 transition">
+                    <span class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyber-neonPink to-cyber-neonPurple text-white font-bold text-xs shadow-lg shadow-cyber-neonPink/30 group-hover:shadow-cyber-neonPink/50 transition pointer-events-none">
                         Foto auswählen
                     </span>
                 </div>
             </div>
 
-            <!-- DUAL BATTLE UPLOAD BOXES (Hidden by default) -->
+            <!-- DUAL BATTLE UPLOAD BOXES -->
             <div id="battleUploadBox" class="w-full grid grid-cols-2 gap-3 hidden">
                 <!-- Player A -->
                 <div id="dropZoneA" class="glass-panel rounded-3xl p-4 flex flex-col items-center text-center border-2 border-dashed border-cyber-neonPink/40 hover:border-cyber-neonPink transition cursor-pointer relative overflow-hidden group min-h-[180px] justify-center">
-                    <input type="file" id="fileInputA" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-20">
+                    <input type="file" id="fileInputA" accept="image/*" class="hidden">
                     <img id="previewA" class="absolute inset-0 w-full h-full object-cover hidden">
-                    <div id="contentA" class="flex flex-col items-center">
+                    <div id="contentA" class="flex flex-col items-center pointer-events-none">
                         <i data-lucide="user-check" class="w-8 h-8 text-cyber-neonPink mb-2"></i>
                         <span class="text-xs font-bold text-white mb-1">Foto A (Ich)</span>
                         <span class="text-[10px] text-gray-400">Tippen zum Wählen</span>
@@ -194,27 +198,27 @@
 
                 <!-- Player B -->
                 <div id="dropZoneB" class="glass-panel rounded-3xl p-4 flex flex-col items-center text-center border-2 border-dashed border-cyber-neonCyan/40 hover:border-cyber-neonCyan transition cursor-pointer relative overflow-hidden group min-h-[180px] justify-center">
-                    <input type="file" id="fileInputB" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-20">
+                    <input type="file" id="fileInputB" accept="image/*" class="hidden">
                     <img id="previewB" class="absolute inset-0 w-full h-full object-cover hidden">
-                    <div id="contentB" class="flex flex-col items-center">
+                    <div id="contentB" class="flex flex-col items-center pointer-events-none">
                         <i data-lucide="user-plus" class="w-8 h-8 text-cyber-neonCyan mb-2"></i>
-                        <span class="text-xs font-bold text-white mb-1">Foto B (Opponent)</span>
+                        <span class="text-xs font-bold text-white mb-1">Foto B (Gegner)</span>
                         <span class="text-[10px] text-gray-400">Tippen zum Wählen</span>
                     </div>
                 </div>
 
-                <button id="startBattleBtn" class="col-span-2 py-3 rounded-2xl bg-gradient-to-r from-cyber-neonPink via-cyber-neonPurple to-cyber-neonCyan text-white font-black text-sm shadow-xl shadow-cyber-neonPink/30 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                <button id="startBattleBtn" class="col-span-2 py-3 rounded-2xl bg-gradient-to-r from-cyber-neonPink via-cyber-neonPurple to-cyber-neonCyan text-white font-black text-sm shadow-xl shadow-cyber-neonPink/30 disabled:opacity-40 disabled:cursor-not-allowed" disabled>
                     ⚔️ VIBE BATTLE STARTEN
                 </button>
             </div>
 
             <!-- Preset Samples Section -->
             <div class="w-full mt-5">
-                <p class="text-xs font-bold uppercase text-gray-400 tracking-wider mb-2.5 text-center">Oder starte mit Instant Presets:</p>
+                <p class="text-xs font-bold uppercase text-gray-400 tracking-wider mb-2.5 text-center">Oder starte mit Presets:</p>
                 <div class="grid grid-cols-4 gap-2.5">
                     <button class="preset-btn glass-panel p-2 rounded-2xl flex flex-col items-center hover:border-cyber-neonCyan transition text-center group" data-preset="fit">
                         <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=300&auto=format&fit=crop&q=80" alt="Fit Check" class="w-full h-14 object-cover rounded-xl mb-1 group-hover:scale-105 transition">
-                        <span class="text-[10px] font-semibold text-gray-300">Fit Check</span>
+                        <span class="text-[10px] font-semibold text-gray-300">Fitness Drip</span>
                     </button>
                     <button class="preset-btn glass-panel p-2 rounded-2xl flex flex-col items-center hover:border-cyber-neonCyan transition text-center group" data-preset="coffee">
                         <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=300&auto=format&fit=crop&q=80" alt="Matcha" class="w-full h-14 object-cover rounded-xl mb-1 group-hover:scale-105 transition">
@@ -222,7 +226,7 @@
                     </button>
                     <button class="preset-btn glass-panel p-2 rounded-2xl flex flex-col items-center hover:border-cyber-neonCyan transition text-center group" data-preset="cat">
                         <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=300&auto=format&fit=crop&q=80" alt="Cat" class="w-full h-14 object-cover rounded-xl mb-1 group-hover:scale-105 transition">
-                        <span class="text-[10px] font-semibold text-gray-300">Main Character</span>
+                        <span class="text-[10px] font-semibold text-gray-300">Main Cat</span>
                     </button>
                     <button class="preset-btn glass-panel p-2 rounded-2xl flex flex-col items-center hover:border-cyber-neonCyan transition text-center group" data-preset="room">
                         <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=300&auto=format&fit=crop&q=80" alt="Cyber Room" class="w-full h-14 object-cover rounded-xl mb-1 group-hover:scale-105 transition">
@@ -277,12 +281,11 @@
             <div class="w-full glass-panel rounded-3xl p-5 mb-4 border border-white/10 shadow-2xl relative overflow-hidden">
                 <div class="flex flex-col sm:flex-row items-center gap-4">
                     
-                    <!-- Single Image or Battle Comparison Container -->
-                    <div id="resultImageWrapper" class="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border-2 border-cyber-neonCyan flex-shrink-0 shadow-lg bg-black">
-                        <!-- Canvas overlay for stickers -->
-                        <div id="interactivePhotoStage" class="relative w-full h-full">
-                            <img id="resultImage" src="" alt="Analyzed Photo" class="w-full h-full object-cover">
-                            <img id="resultImageB" src="" alt="Photo B" class="w-1/2 h-full object-cover absolute top-0 right-0 border-l-2 border-cyber-neonPink hidden">
+                    <!-- Single Image or Battle Comparison Container with Sticker Stage -->
+                    <div id="resultImageWrapper" class="relative w-36 h-36 sm:w-40 sm:h-40 rounded-2xl overflow-hidden border-2 border-cyber-neonCyan flex-shrink-0 shadow-lg bg-black select-none">
+                        <div id="interactivePhotoStage" class="relative w-full h-full overflow-hidden">
+                            <img id="resultImage" src="" alt="Analyzed Photo" class="w-full h-full object-cover pointer-events-none">
+                            <img id="resultImageB" src="" alt="Photo B" class="w-1/2 h-full object-cover absolute top-0 right-0 border-l-2 border-cyber-neonPink hidden pointer-events-none">
                         </div>
                     </div>
 
@@ -310,14 +313,16 @@
                 </div>
             </div>
 
-            <!-- Dynamic Sticker Selector (Interactive Overlay) -->
+            <!-- Dynamic Sticker Selector (Interactive Drag & Drop System) -->
             <div class="w-full glass-panel rounded-2xl p-3 mb-4 flex items-center justify-between gap-2 overflow-x-auto">
-                <span class="text-[11px] font-bold text-gray-400 uppercase tracking-wider flex-shrink-0">Sticker hinzufügen:</span>
-                <div class="flex items-center gap-2">
-                    <button class="add-sticker-btn px-2.5 py-1 rounded-lg bg-white/10 hover:bg-cyber-neonPink/30 border border-white/20 text-xs font-bold transition flex items-center gap-1" data-sticker="🔥 SLAY">🔥 SLAY</button>
-                    <button class="add-sticker-btn px-2.5 py-1 rounded-lg bg-white/10 hover:bg-cyber-neonCyan/30 border border-white/20 text-xs font-bold transition flex items-center gap-1" data-sticker="🧢 CAP">🧢 CAP</button>
-                    <button class="add-sticker-btn px-2.5 py-1 rounded-lg bg-white/10 hover:bg-cyber-neonYellow/30 border border-white/20 text-xs font-bold transition flex items-center gap-1" data-sticker="✨ 10/10">✨ 10/10</button>
-                    <button class="add-sticker-btn px-2.5 py-1 rounded-lg bg-white/10 hover:bg-cyber-neonPurple/30 border border-white/20 text-xs font-bold transition flex items-center gap-1" data-sticker="🤖 NPC">🤖 NPC</button>
+                <span class="text-[11px] font-bold text-gray-400 uppercase tracking-wider flex-shrink-0">Sticker ziehen/tippen:</span>
+                <div class="flex items-center gap-1.5">
+                    <button class="add-sticker-btn px-2.5 py-1 rounded-lg bg-white/10 hover:bg-cyber-neonPink/30 border border-white/20 text-xs font-bold transition" data-sticker="🔥 SLAY">🔥 SLAY</button>
+                    <button class="add-sticker-btn px-2.5 py-1 rounded-lg bg-white/10 hover:bg-cyber-neonCyan/30 border border-white/20 text-xs font-bold transition" data-sticker="🧢 CAP">🧢 CAP</button>
+                    <button class="add-sticker-btn px-2.5 py-1 rounded-lg bg-white/10 hover:bg-cyber-neonYellow/30 border border-white/20 text-xs font-bold transition" data-sticker="✨ 10/10">✨ 10/10</button>
+                    <button class="add-sticker-btn px-2.5 py-1 rounded-lg bg-white/10 hover:bg-cyber-neonPurple/30 border border-white/20 text-xs font-bold transition" data-sticker="🤖 NPC">🤖 NPC</button>
+                    <button class="add-sticker-btn px-2.5 py-1 rounded-lg bg-white/10 hover:bg-red-500/30 border border-white/20 text-xs font-bold transition" data-sticker="💀 DEAD">💀 DEAD</button>
+                    <button class="add-sticker-btn px-2.5 py-1 rounded-lg bg-white/10 hover:bg-emerald-500/30 border border-white/20 text-xs font-bold transition" data-sticker="👑 GOAT">👑 GOAT</button>
                 </div>
             </div>
 
@@ -328,7 +333,12 @@
                         <i data-lucide="flame" id="verdictIcon" class="w-4 h-4 text-cyber-neonYellow"></i>
                         <span id="verdictLabel">AI Viral Roast</span>
                     </div>
-                    <span id="compatibilityTag" class="hidden text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-cyber-neonCyan/20 text-cyber-neonCyan border border-cyber-neonCyan/40">Match: 96%</span>
+                    <div class="flex items-center gap-2">
+                        <button id="rerollVerdictBtn" class="px-2 py-0.5 rounded-lg bg-white/10 hover:bg-white/20 text-[11px] text-gray-300 font-semibold flex items-center gap-1 transition">
+                            <i data-lucide="refresh-cw" class="w-3 h-3"></i> Neu analysieren
+                        </button>
+                        <span id="compatibilityTag" class="hidden text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-cyber-neonCyan/20 text-cyber-neonCyan border border-cyber-neonCyan/40">Match: 96%</span>
+                    </div>
                 </div>
                 <p id="aiVerdictText" class="text-gray-100 font-medium text-sm sm:text-base leading-relaxed italic">
                     "Du siehst aus, als hättest du 45 Minuten für dieses 'mühelose' Foto gebraucht."
@@ -366,11 +376,11 @@
                     </div>
                     <!-- Audio Wave Visualizer Bars -->
                     <div class="flex items-end gap-1 h-4 mt-2 pt-1 border-t border-white/5">
-                        <div class="viz-bar w-full bg-cyber-neonCyan rounded-t h-2 animate-pulse"></div>
-                        <div class="viz-bar w-full bg-cyber-neonPink rounded-t h-4 animate-pulse"></div>
-                        <div class="viz-bar w-full bg-cyber-neonYellow rounded-t h-3 animate-pulse"></div>
-                        <div class="viz-bar w-full bg-cyber-neonPurple rounded-t h-5 animate-pulse"></div>
-                        <div class="viz-bar w-full bg-cyber-neonCyan rounded-t h-2 animate-pulse"></div>
+                        <div class="viz-bar w-full bg-cyber-neonCyan rounded-t h-2 transition-all duration-150"></div>
+                        <div class="viz-bar w-full bg-cyber-neonPink rounded-t h-4 transition-all duration-150"></div>
+                        <div class="viz-bar w-full bg-cyber-neonYellow rounded-t h-3 transition-all duration-150"></div>
+                        <div class="viz-bar w-full bg-cyber-neonPurple rounded-t h-5 transition-all duration-150"></div>
+                        <div class="viz-bar w-full bg-cyber-neonCyan rounded-t h-2 transition-all duration-150"></div>
                     </div>
                 </div>
 
@@ -419,7 +429,16 @@
             <h3 class="text-base font-bold text-white mb-1 flex items-center gap-2">
                 <i data-lucide="download" class="w-4 h-4 text-cyber-neonCyan"></i> Deine TikTok Story Card
             </h3>
-            <p class="text-xs text-gray-400 mb-4 text-center">Inklusive deiner Sticker & Auswertung!</p>
+            <p class="text-xs text-gray-400 mb-3 text-center">Exportiere das 9:16 Poster direkt für deine Story!</p>
+
+            <!-- Theme Color Preset Selector for Story Canvas -->
+            <div class="flex items-center justify-center gap-2 mb-3">
+                <span class="text-[10px] text-gray-400 uppercase font-bold">Theme:</span>
+                <button class="theme-picker-btn w-6 h-6 rounded-full bg-cyber-neonPink border-2 border-white" data-theme="pink"></button>
+                <button class="theme-picker-btn w-6 h-6 rounded-full bg-cyber-neonCyan border-2 border-transparent" data-theme="cyan"></button>
+                <button class="theme-picker-btn w-6 h-6 rounded-full bg-cyber-neonYellow border-2 border-transparent" data-theme="yellow"></button>
+                <button class="theme-picker-btn w-6 h-6 rounded-full bg-cyber-neonPurple border-2 border-transparent" data-theme="purple"></button>
+            </div>
 
             <!-- HTML5 Export Canvas -->
             <div class="relative w-full aspect-[9/16] max-h-[420px] rounded-2xl overflow-hidden border border-cyber-neonCyan/40 shadow-2xl mb-4 bg-cyber-black">
@@ -441,7 +460,13 @@
 
     <!-- ================= JAVASCRIPT LOGIC ================= -->
     <script>
-        lucide.createIcons();
+        // Safe Lucide helper call
+        function refreshIcons() {
+            if (window.lucide) {
+                try { lucide.createIcons(); } catch(e){}
+            }
+        }
+        refreshIcons();
 
         // Presets Database
         const PRESETS = {
@@ -451,31 +476,81 @@
             room: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&auto=format&fit=crop&q=80"
         };
 
-        // Viral AI Content Database (Roast vs Praise)
+        // VIRAL AI ROAST DATABASE (Categorized for Maximum Variety)
         const DATABASE = {
-            roast: [
-                {
-                    aesthetic: "Main Character Syndrome 🎭",
-                    title: "Extreme NPC-Energy",
-                    verdict: "Sieht aus wie Pinterest von 2019. Du hast 45 Minuten für dieses 'spontane' Foto gebraucht und tust so, als hättest du es versehentlich gemacht.",
-                    song: "Phonk Remix - Sped Up (TikTok Trend)",
-                    colors: ["#FF007F", "#00F3FF", "#9D00FF", "#121124", "#FFE600"]
-                },
-                {
-                    aesthetic: "Over-the-Top Drip 💧",
-                    title: "99% Filter, 1% Realität",
-                    verdict: "Dein Outfit sagt 'High Fashion', aber deine Pose sagt 'Meine Eltern wollen, dass ich studieren gehe'. Cap-Level: 10/10.",
-                    song: "Drake - Rich Flex (Instrumental Loop)",
-                    colors: ["#FFE600", "#FF70A6", "#70D6FF", "#2B1B17", "#00F3FF"]
-                },
-                {
-                    aesthetic: "Doomscroller Aesthetic 📱",
-                    title: "3 Uhr Nachts Snack-Vibe",
-                    verdict: "Du siehst aus, als hättest du seit 14 Stunden TikToks geschaut und 3 Eistees getrunken. Maximaler Schlafmangel-Drip.",
-                    song: "Lofi Beats - Sad Girl Hours",
-                    colors: ["#2F3E46", "#354F52", "#52796F", "#84A98C", "#CAD2C5"]
-                }
-            ],
+            roast: {
+                savage: [
+                    {
+                        aesthetic: "Extreme NPC Energy 🎭",
+                        title: "Hintergrund-Statist Aura",
+                        verdict: "Sieht aus wie Pinterest von 2019. Du hast 45 Minuten für dieses 'spontane' Foto gebraucht und tust jetzt so, als hättest du es aus Versehentlichkeit gemacht.",
+                        song: "Phonk Remix - Sped Up (TikTok Trend)",
+                        colors: ["#FF007F", "#00F3FF", "#9D00FF", "#121124", "#FFE600"]
+                    },
+                    {
+                        aesthetic: "Desperate Main Character 🎬",
+                        title: "Filter-Level: Maximal",
+                        verdict: "Dieses Foto schreit 'Bitte validiert mich in den Kommentaren'. Sogar FaceApp hat bei der Bearbeitung um eine Pause gebeten.",
+                        song: "Carti Type Beat - Slowed & Reverb",
+                        colors: ["#FF0055", "#FF5050", "#7000FF", "#1A1A2E", "#00F3FF"]
+                    },
+                    {
+                        aesthetic: "3 Uhr Nachts Doomscroller 📱",
+                        title: "Schlafmangel-Drip",
+                        verdict: "Du siehst aus, als hättest du seit 14 Stunden TikToks geschaut, 3 Eistees getrunken und vergessen, wie Sonnenlicht aussieht.",
+                        song: "Lofi Beats - Sad Girl Hours",
+                        colors: ["#2F3E46", "#354F52", "#52796F", "#84A98C", "#CAD2C5"]
+                    }
+                ],
+                outfit: [
+                    {
+                        aesthetic: "Over-the-Top Drip 💧",
+                        title: "99% Fast Fashion, 1% Realität",
+                        verdict: "Dein Outfit sagt 'High Fashion Paris', aber deine Pose sagt 'Meine Eltern bezahlen noch immer mein Handy-Abo'. Cap-Level: 10/10.",
+                        song: "Drake - Rich Flex (Instrumental Loop)",
+                        colors: ["#FFE600", "#FF70A6", "#70D6FF", "#2B1B17", "#00F3FF"]
+                    },
+                    {
+                        aesthetic: "Schema-F Fast-Fashion 🛍️",
+                        title: "ZARA Schaufenster-Puppe",
+                        verdict: "Wenn man 'Standard Outfit 2026' googelt, kommt genau dieses Foto. Nichts daran ist individuell, aber immerhin passt der Farbton.",
+                        song: "Yeat - Rage Beat Remix",
+                        colors: ["#D4C5B9", "#8B5A2B", "#1A1A1A", "#FF007F", "#00F3FF"]
+                    }
+                ],
+                psyche: [
+                    {
+                        aesthetic: "Fake-Deep Energy 📖",
+                        title: "Gefälschte Melancholie",
+                        verdict: "Schaut aus dem Fenster, als würde im Hintergrund ein Trauerfilm laufen, hat aber in Wahrheit nur auf den Lieferando-Fahrer gewartet.",
+                        song: "Frank Ocean - Blonde Synth Loop",
+                        colors: ["#1B263B", "#415A77", "#778DA9", "#E0E1DD", "#FF007F"]
+                    },
+                    {
+                        aesthetic: "Cringe Tryhard 🤡",
+                        title: "Überdosierter Einsatz",
+                        verdict: "Du hast die Kamera in 17 verschiedenen Winkeln aufgestellt, bis dieses eine Foto einigermaßen 'chillig' aussah. Wir wissen es alle.",
+                        song: "Spongebob Trap Beat",
+                        colors: ["#FF0055", "#FFE600", "#00F3FF", "#000000", "#FFFFFF"]
+                    }
+                ],
+                genz: [
+                    {
+                        aesthetic: "Rizz Overload 🗿",
+                        title: "Minus 10.000 Aura",
+                        verdict: "Bro denkt wirklich, er hat unendlichen Rizz mit dieser Pose. Das einzige, was hier ge-mewed wird, ist die Enttäuschung deiner Freunde.",
+                        song: "Sigma Boy TikTok Anthem",
+                        colors: ["#00F3FF", "#FFE600", "#FF007F", "#111111", "#FFFFFF"]
+                    },
+                    {
+                        aesthetic: "Brainrot Special 🧠",
+                        title: "Skibidi Level 99",
+                        verdict: "Du hast so viele TikTok-Trends konsumiert, dass deine Körpersprache direkt aus Minecraft Animationen stammt. Stop yapping, start lookmaxxing.",
+                        song: "Brazillian Phonk Funk",
+                        colors: ["#FF007F", "#9D00FF", "#00F3FF", "#121124", "#FFE600"]
+                    }
+                ]
+            },
             praise: [
                 {
                     aesthetic: "Clean Girl Aesthetic ✨",
@@ -504,12 +579,14 @@
         // State Variables
         let isBattleMode = false;
         let isRoastMode = true;
+        let activeRoastCategory = 'savage';
         let soundEnabled = true;
         let audioCtx = null;
         let imageSrcA = "";
         let imageSrcB = "";
         let currentVibe = null;
         let activeStickers = [];
+        let posterTheme = "pink";
 
         // DOM Elements
         const singleUploadBox = document.getElementById('singleUploadBox');
@@ -518,8 +595,38 @@
         const battleModeBtn = document.getElementById('battleModeBtn');
         const roastToggleBtn = document.getElementById('roastToggleBtn');
         const roastToggleText = document.getElementById('roastToggleText');
+        const roastCatSelector = document.getElementById('roastCategorySelector');
         const heroTitle = document.getElementById('heroTitle');
         const heroSubtitle = document.getElementById('heroSubtitle');
+        const dropZoneSingle = document.getElementById('dropZoneSingle');
+        const fileInputSingle = document.getElementById('fileInputSingle');
+        const dropZoneA = document.getElementById('dropZoneA');
+        const fileInputA = document.getElementById('fileInputA');
+        const dropZoneB = document.getElementById('dropZoneB');
+        const fileInputB = document.getElementById('fileInputB');
+
+        // Robust Click-to-Upload Handlers
+        dropZoneSingle.addEventListener('click', () => fileInputSingle.click());
+        dropZoneA.addEventListener('click', () => fileInputA.click());
+        dropZoneB.addEventListener('click', () => fileInputB.click());
+
+        // Drag & Drop Support
+        [dropZoneSingle, dropZoneA, dropZoneB].forEach(zone => {
+            zone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                zone.classList.add('border-cyber-neonPink');
+            });
+            zone.addEventListener('dragleave', () => {
+                zone.classList.remove('border-cyber-neonPink');
+            });
+        });
+
+        dropZoneSingle.addEventListener('drop', (e) => {
+            e.preventDefault();
+            if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+                handleFileSelect(e.dataTransfer.files[0], 'A');
+            }
+        });
 
         // Mode Switching (Single vs Battle)
         singleModeBtn.addEventListener('click', () => {
@@ -542,57 +649,70 @@
             heroSubtitle.textContent = 'Lade 2 Fotos hoch: "Ich vs. Bestie" oder "Fit A vs. Fit B" für das ultimative Duell!';
         });
 
-        // Roast / Praise Toggle
+        // Roast / Praise Toggle & Category Switches
         roastToggleBtn.addEventListener('click', () => {
             isRoastMode = !isRoastMode;
             if (isRoastMode) {
                 roastToggleBtn.className = "px-3 py-1 rounded-xl text-xs font-extrabold transition bg-cyber-neonPink/20 text-cyber-neonPink border border-cyber-neonPink/40 flex items-center gap-1.5";
                 roastToggleText.textContent = "🔥 Gnadenlos (Roast)";
+                roastCatSelector.classList.remove('hidden');
             } else {
                 roastToggleBtn.className = "px-3 py-1 rounded-xl text-xs font-extrabold transition bg-cyber-neonCyan/20 text-cyber-neonCyan border border-cyber-neonCyan/40 flex items-center gap-1.5";
                 roastToggleText.textContent = "✨ Liebevoll (Praise)";
+                roastCatSelector.classList.add('hidden');
             }
             playBeep(500, 'sine', 0.1);
         });
 
-        // File Inputs logic
-        document.getElementById('fileInputSingle').addEventListener('change', (e) => {
-            if (e.target.files && e.target.files[0]) {
-                const reader = new FileReader();
-                reader.onload = (evt) => {
-                    imageSrcA = evt.target.result;
-                    startScan();
-                };
-                reader.readAsDataURL(e.target.files[0]);
-            }
+        document.querySelectorAll('.roast-cat-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.roast-cat-btn').forEach(b => {
+                    b.className = "roast-cat-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white/5 text-gray-300 border border-white/10 hover:border-white/30 transition";
+                });
+                btn.className = "roast-cat-btn px-3 py-1.5 rounded-xl text-xs font-extrabold bg-cyber-neonPink text-white border border-cyber-neonPink transition shadow-md";
+                activeRoastCategory = btn.getAttribute('data-cat');
+                playBeep(450, 'sine', 0.08);
+            });
         });
 
-        document.getElementById('fileInputA').addEventListener('change', (e) => {
-            if (e.target.files && e.target.files[0]) {
-                const reader = new FileReader();
-                reader.onload = (evt) => {
-                    imageSrcA = evt.target.result;
-                    document.getElementById('previewA').src = imageSrcA;
-                    document.getElementById('previewA').classList.remove('hidden');
-                    document.getElementById('contentA').classList.add('opacity-0');
-                    checkBattleReady();
-                };
-                reader.readAsDataURL(e.target.files[0]);
-            }
-        });
+        // Universal File Selector Handler
+        function handleFileSelect(file, slot = 'A') {
+            if (!file || !file.type.startsWith('image/')) return;
 
-        document.getElementById('fileInputB').addEventListener('change', (e) => {
-            if (e.target.files && e.target.files[0]) {
-                const reader = new FileReader();
-                reader.onload = (evt) => {
+            const reader = new FileReader();
+            reader.onload = (evt) => {
+                if (slot === 'A') {
+                    imageSrcA = evt.target.result;
+                    if (!isBattleMode) {
+                        startScan();
+                    } else {
+                        document.getElementById('previewA').src = imageSrcA;
+                        document.getElementById('previewA').classList.remove('hidden');
+                        document.getElementById('contentA').classList.add('opacity-0');
+                        checkBattleReady();
+                    }
+                } else {
                     imageSrcB = evt.target.result;
                     document.getElementById('previewB').src = imageSrcB;
                     document.getElementById('previewB').classList.remove('hidden');
                     document.getElementById('contentB').classList.add('opacity-0');
                     checkBattleReady();
-                };
-                reader.readAsDataURL(e.target.files[0]);
-            }
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+
+        fileInputSingle.addEventListener('change', (e) => {
+            if (e.target.files[0]) handleFileSelect(e.target.files[0], 'A');
+            fileInputSingle.value = '';
+        });
+        fileInputA.addEventListener('change', (e) => {
+            if (e.target.files[0]) handleFileSelect(e.target.files[0], 'A');
+            fileInputA.value = '';
+        });
+        fileInputB.addEventListener('change', (e) => {
+            if (e.target.files[0]) handleFileSelect(e.target.files[0], 'B');
+            fileInputB.value = '';
         });
 
         function checkBattleReady() {
@@ -607,13 +727,12 @@
             if (imageSrcA && imageSrcB) startScan();
         });
 
-        // Preset Clicks
+        // Preset Click Listeners
         document.querySelectorAll('.preset-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const key = btn.getAttribute('data-preset');
                 imageSrcA = PRESETS[key];
                 if (isBattleMode) {
-                    // Pick a random second preset for battle
                     const keys = Object.keys(PRESETS);
                     imageSrcB = PRESETS[keys[Math.floor(Math.random() * keys.length)]];
                 }
@@ -621,7 +740,7 @@
             });
         });
 
-        // Sound Synthesizer (Web Audio API)
+        // Web Audio Synthesizer & Audio Wave Visualizer
         function initAudio() {
             if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         }
@@ -643,35 +762,48 @@
             } catch(e) {}
         }
 
-        // Fake Beat Generator (Phonk/LoFi synth sound)
         let isPlayingBeat = false;
         let beatInterval = null;
 
         function toggleBeat() {
             if (!soundEnabled) return;
             initAudio();
-            const btn = document.getElementById('playAudioBtn');
             const icon = document.getElementById('audioPlayIcon');
+            const bars = document.querySelectorAll('.viz-bar');
 
             if (isPlayingBeat) {
                 clearInterval(beatInterval);
                 isPlayingBeat = false;
                 icon.setAttribute('data-lucide', 'play');
+                bars.forEach(b => b.style.height = '6px');
             } else {
                 isPlayingBeat = true;
                 icon.setAttribute('data-lucide', 'pause');
                 let step = 0;
-                const notes = [130.81, 155.56, 174.61, 196.00]; // Low C Phonk Bass
+                const notes = [130.81, 155.56, 174.61, 196.00];
                 beatInterval = setInterval(() => {
-                    playBeep(notes[step % notes.length], 'sawtooth', 0.2);
-                    if (step % 2 === 0) playBeep(800, 'square', 0.05); // Kick/Snare
+                    playBeep(notes[step % notes.length], 'sawtooth', 0.18);
+                    if (step % 2 === 0) playBeep(750, 'square', 0.04);
+
+                    // Animate Equalizer Bars
+                    bars.forEach(b => {
+                        b.style.height = Math.floor(Math.random() * 14 + 4) + 'px';
+                    });
                     step++;
                 }, 220);
             }
-            lucide.createIcons();
+            refreshIcons();
         }
 
         document.getElementById('playAudioBtn').addEventListener('click', toggleBeat);
+
+        // Sound Mute Toggle
+        document.getElementById('soundToggleBtn').addEventListener('click', () => {
+            soundEnabled = !soundEnabled;
+            document.getElementById('soundText').textContent = soundEnabled ? "Audio AN" : "Audio AUS";
+            document.getElementById('soundIcon').setAttribute('data-lucide', soundEnabled ? 'volume-2' : 'volume-x');
+            refreshIcons();
+        });
 
         // Scan Sequence
         function startScan() {
@@ -719,15 +851,23 @@
                     clearInterval(interval);
                     setTimeout(showResults, 300);
                 }
-            }, 100);
+            }, 90);
         }
 
-        // Show Results Screen
+        // Show Results Screen & Select Verdict
+        function pickVerdict() {
+            if (isRoastMode) {
+                const categoryPool = DATABASE.roast[activeRoastCategory] || DATABASE.roast.savage;
+                return categoryPool[Math.floor(Math.random() * categoryPool.length)];
+            } else {
+                return DATABASE.praise[Math.floor(Math.random() * DATABASE.praise.length)];
+            }
+        }
+
         function showResults() {
             playBeep(600, 'triangle', 0.2);
 
-            const pool = isRoastMode ? DATABASE.roast : DATABASE.praise;
-            currentVibe = pool[Math.floor(Math.random() * pool.length)];
+            currentVibe = pickVerdict();
 
             // Fill UI
             document.getElementById('resultImage').src = imageSrcA;
@@ -741,12 +881,12 @@
 
             document.getElementById('aestheticCategory').textContent = currentVibe.aesthetic;
             document.getElementById('vibeTitle').textContent = isBattleMode ? "VIBE BATTLE: FIT A WINS! 🏆" : currentVibe.title;
-            document.getElementById('vibeScoreNum').textContent = Math.floor(Math.random() * 12) + 88;
+            document.getElementById('vibeScoreNum').textContent = Math.floor(Math.random() * 14) + 86;
             document.getElementById('aiVerdictText').textContent = `"${currentVibe.verdict}"`;
             document.getElementById('songTitle').textContent = currentVibe.song;
 
-            // Compatibility / Live Votes
-            const votes = (Math.random() * 4 + 1.1).toFixed(1);
+            // Live Votes Count
+            const votes = (Math.random() * 4 + 1.2).toFixed(1);
             document.getElementById('liveVotesCount').textContent = `${votes}k TikTok Live Votes`;
 
             const compTag = document.getElementById('compatibilityTag');
@@ -758,21 +898,21 @@
             }
 
             // Roast vs Praise Icon/Label
-            document.getElementById('verdictLabel').textContent = isRoastMode ? "AI Viral Roast" : "AI Compliment";
+            document.getElementById('verdictLabel').textContent = isRoastMode ? `AI Roast (${activeRoastCategory.toUpperCase()})` : "AI Compliment";
             document.getElementById('verdictIcon').setAttribute('data-lucide', isRoastMode ? 'flame' : 'heart');
-            lucide.createIcons();
+            refreshIcons();
 
             // Color Palette
             const paletteContainer = document.getElementById('paletteContainer');
             paletteContainer.innerHTML = '';
             currentVibe.colors.forEach(hex => {
                 const swatch = document.createElement('div');
-                swatch.className = 'h-9 rounded-xl border border-white/20 shadow-md';
+                swatch.className = 'h-9 rounded-xl border border-white/20 shadow-md transition transform hover:scale-105';
                 swatch.style.backgroundColor = hex;
                 paletteContainer.appendChild(swatch);
             });
 
-            // Reset Stickers
+            // Reset Active Stickers
             activeStickers = [];
             renderStickersOnStage();
 
@@ -785,31 +925,93 @@
             confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
         }
 
-        // Interactive Sticker Overlay System
+        // Reroll AI Verdict Button
+        document.getElementById('rerollVerdictBtn').addEventListener('click', () => {
+            currentVibe = pickVerdict();
+            document.getElementById('aiVerdictText').textContent = `"${currentVibe.verdict}"`;
+            document.getElementById('vibeTitle').textContent = isBattleMode ? "VIBE BATTLE: RE-JUDGED! ⚔️" : currentVibe.title;
+            document.getElementById('aestheticCategory').textContent = currentVibe.aesthetic;
+            playBeep(750, 'sine', 0.1);
+        });
+
+        // Interactive Drag & Drop Sticker System
+        const stage = document.getElementById('interactivePhotoStage');
+
         document.querySelectorAll('.add-sticker-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const stickerText = btn.getAttribute('data-sticker');
                 activeStickers.push({
+                    id: Date.now(),
                     text: stickerText,
-                    x: Math.random() * 40 + 10,
-                    y: Math.random() * 40 + 20
+                    x: 20 + Math.random() * 30,
+                    y: 20 + Math.random() * 30
                 });
                 renderStickersOnStage();
-                playBeep(700, 'sine', 0.1);
+                playBeep(700, 'sine', 0.08);
             });
         });
 
         function renderStickersOnStage() {
-            const stage = document.getElementById('interactivePhotoStage');
-            // Remove existing stickers
+            // Clear previous elements
             stage.querySelectorAll('.sticker-item').forEach(el => el.remove());
 
-            activeStickers.forEach((st, idx) => {
+            activeStickers.forEach((st) => {
                 const el = document.createElement('div');
-                el.className = 'sticker-item absolute px-2 py-0.5 rounded-md bg-black/80 border border-cyber-neonCyan text-[10px] font-black text-cyber-neonCyan shadow-lg';
+                el.className = 'sticker-item absolute px-2.5 py-1 rounded-lg bg-black/85 border-2 border-cyber-neonCyan text-[11px] font-black text-cyber-neonCyan shadow-2xl flex items-center gap-1 z-30 select-none';
                 el.style.left = st.x + '%';
                 el.style.top = st.y + '%';
-                el.textContent = st.text;
+                el.innerHTML = `<span>${st.text}</span><span class="remove-btn text-[9px] opacity-60 hover:opacity-100 ml-1">✕</span>`;
+
+                // Delete sticker on click x
+                el.querySelector('.remove-btn').addEventListener('click', (ev) => {
+                    ev.stopPropagation();
+                    activeStickers = activeStickers.filter(s => s.id !== st.id);
+                    renderStickersOnStage();
+                });
+
+                // Dragging logic
+                let isDragging = false;
+                let startX, startY, initialLeft, initialTop;
+
+                const onStart = (e) => {
+                    isDragging = true;
+                    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                    startX = clientX;
+                    startY = clientY;
+                    const rect = stage.getBoundingClientRect();
+                    initialLeft = ((el.offsetLeft) / rect.width) * 100;
+                    initialTop = ((el.offsetTop) / rect.height) * 100;
+                };
+
+                const onMove = (e) => {
+                    if (!isDragging) return;
+                    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                    const rect = stage.getBoundingClientRect();
+
+                    const deltaX = ((clientX - startX) / rect.width) * 100;
+                    const deltaY = ((clientY - startY) / rect.height) * 100;
+
+                    let newX = Math.max(0, Math.min(80, initialLeft + deltaX));
+                    let newY = Math.max(0, Math.min(85, initialTop + deltaY));
+
+                    el.style.left = newX + '%';
+                    el.style.top = newY + '%';
+                    st.x = newX;
+                    st.y = newY;
+                };
+
+                const onEnd = () => { isDragging = false; };
+
+                el.addEventListener('mousedown', onStart);
+                window.addEventListener('mousemove', onMove);
+                window.addEventListener('mouseup', onEnd);
+
+                el.addEventListener('touchstart', onStart, { passive: true });
+                window.addEventListener('touchmove', onMove, { passive: true });
+                window.addEventListener('touchend', onEnd);
+
                 stage.appendChild(el);
             });
         }
@@ -829,26 +1031,33 @@
             document.getElementById('startBattleBtn').disabled = true;
         });
 
-        // Copy TikTok Caption
+        // Copy Caption
         document.getElementById('copyCaptionBtn').addEventListener('click', () => {
             const modeTag = isRoastMode ? "#airoast" : "#aipraise";
             const caption = `VibeCheck 2026 Result: ${currentVibe.title} (${currentVibe.aesthetic}) 🔥 Score: ${document.getElementById('vibeScoreNum').textContent}/100! ${modeTag} #vibecheck #fyp #viral #2026`;
             
-            const temp = document.createElement('textarea');
-            temp.value = caption;
-            document.body.appendChild(temp);
-            temp.select();
-            document.execCommand('copy');
-            document.body.removeChild(temp);
-
-            playBeep(800, 'sine', 0.1);
-            alert("TikTok Caption in die Zwischenablage kopiert! 📋\n\n" + caption);
+            navigator.clipboard.writeText(caption).then(() => {
+                playBeep(800, 'sine', 0.1);
+                alert("TikTok Caption in Zwischenablage kopiert! 📋\n\n" + caption);
+            }).catch(() => {
+                alert("Caption: " + caption);
+            });
         });
 
         // ================= 9:16 STORY POSTER CANVAS GENERATOR =================
         const modal = document.getElementById('posterModal');
         const posterCanvas = document.getElementById('posterCanvas');
         const ctx = posterCanvas.getContext('2d');
+
+        // Theme picker buttons
+        document.querySelectorAll('.theme-picker-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.theme-picker-btn').forEach(b => b.classList.replace('border-white', 'border-transparent'));
+                btn.classList.replace('border-transparent', 'border-white');
+                posterTheme = btn.getAttribute('data-theme');
+                renderStoryPoster();
+            });
+        });
 
         document.getElementById('generateCardBtn').addEventListener('click', () => {
             playBeep(600, 'sine', 0.1);
@@ -864,6 +1073,15 @@
             posterCanvas.width = 1080;
             posterCanvas.height = 1920;
 
+            const themeColors = {
+                pink: { main: '#ff007f', secondary: '#00f3ff', glow: 'rgba(255, 0, 127, 0.3)' },
+                cyan: { main: '#00f3ff', secondary: '#ffe600', glow: 'rgba(0, 243, 255, 0.3)' },
+                yellow: { main: '#ffe600', secondary: '#ff007f', glow: 'rgba(255, 230, 0, 0.3)' },
+                purple: { main: '#9d00ff', secondary: '#00f3ff', glow: 'rgba(157, 0, 255, 0.3)' }
+            };
+
+            const activeTheme = themeColors[posterTheme] || themeColors.pink;
+
             // Dark Cyber Background
             const bgGrad = ctx.createLinearGradient(0, 0, 1080, 1920);
             bgGrad.addColorStop(0, '#080711');
@@ -872,58 +1090,62 @@
             ctx.fillStyle = bgGrad;
             ctx.fillRect(0, 0, 1080, 1920);
 
-            // Glowing Orbs Background
+            // Glowing Orbs
             ctx.save();
-            ctx.shadowBlur = 120;
-            ctx.shadowColor = '#ff007f';
-            ctx.fillStyle = 'rgba(255, 0, 127, 0.25)';
-            ctx.beginPath(); ctx.arc(900, 250, 280, 0, Math.PI * 2); ctx.fill();
+            ctx.shadowBlur = 140;
+            ctx.shadowColor = activeTheme.main;
+            ctx.fillStyle = activeTheme.glow;
+            ctx.beginPath(); ctx.arc(900, 250, 300, 0, Math.PI * 2); ctx.fill();
 
-            ctx.shadowColor = '#00f3ff';
+            ctx.shadowColor = activeTheme.secondary;
             ctx.fillStyle = 'rgba(0, 243, 255, 0.2)';
             ctx.beginPath(); ctx.arc(150, 1650, 320, 0, Math.PI * 2); ctx.fill();
             ctx.restore();
 
-            // Top Header Tag
-            ctx.fillStyle = '#ff007f';
+            // Header Tag
+            ctx.fillStyle = activeTheme.main;
             ctx.font = 'bold 36px Inter, sans-serif';
             ctx.textAlign = 'center';
             ctx.fillText('VIBECHECK 2026 • AI TIKTOK REPORT', 540, 130);
 
-            // Main Photo Frame
+            // Main Photo Frame Render
             const imgA = new Image();
             imgA.crossOrigin = 'anonymous';
             imgA.onload = () => {
                 ctx.save();
                 ctx.beginPath();
-                ctx.roundRect(140, 180, 800, 800, 36);
+                if (ctx.roundRect) {
+                    ctx.roundRect(140, 180, 800, 800, 36);
+                } else {
+                    ctx.rect(140, 180, 800, 800);
+                }
                 ctx.clip();
 
                 if (isBattleMode && imageSrcB) {
-                    // Split Screen Dual Render
                     ctx.drawImage(imgA, 140, 180, 400, 800);
                     const imgB = new Image();
                     imgB.crossOrigin = 'anonymous';
                     imgB.onload = () => {
                         ctx.drawImage(imgB, 540, 180, 400, 800);
-                        drawPosterOverlay();
+                        drawPosterOverlay(activeTheme);
                     };
                     imgB.src = imageSrcB;
                 } else {
                     ctx.drawImage(imgA, 140, 180, 800, 800);
-                    drawPosterOverlay();
+                    drawPosterOverlay(activeTheme);
                 }
                 ctx.restore();
             };
             imgA.src = imageSrcA;
         }
 
-        function drawPosterOverlay() {
+        function drawPosterOverlay(activeTheme) {
             // Photo Border
-            ctx.strokeStyle = '#00f3ff';
+            ctx.strokeStyle = activeTheme.main;
             ctx.lineWidth = 6;
             ctx.beginPath();
-            ctx.roundRect(140, 180, 800, 800, 36);
+            if (ctx.roundRect) ctx.roundRect(140, 180, 800, 800, 36);
+            else ctx.rect(140, 180, 800, 800);
             ctx.stroke();
 
             // Render Active Stickers onto Poster Canvas
@@ -935,20 +1157,21 @@
                 ctx.strokeStyle = '#ffe600';
                 ctx.lineWidth = 3;
                 ctx.beginPath();
-                ctx.roundRect(canvasX, canvasY, 180, 60, 12);
+                if (ctx.roundRect) ctx.roundRect(canvasX, canvasY, 190, 64, 14);
+                else ctx.rect(canvasX, canvasY, 190, 64);
                 ctx.fill();
                 ctx.stroke();
 
                 ctx.fillStyle = '#ffe600';
                 ctx.font = 'bold 24px Inter, sans-serif';
                 ctx.textAlign = 'center';
-                ctx.fillText(st.text, canvasX + 90, canvasY + 38);
+                ctx.fillText(st.text, canvasX + 95, canvasY + 40);
             });
 
             // Title & Category
             ctx.textAlign = 'center';
             ctx.fillStyle = '#ffe600';
-            ctx.font = '900 60px Inter, sans-serif';
+            ctx.font = '900 58px Inter, sans-serif';
             ctx.fillText(document.getElementById('vibeTitle').textContent.toUpperCase(), 540, 1060);
 
             ctx.fillStyle = '#ffffff';
@@ -960,12 +1183,13 @@
             ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
             ctx.lineWidth = 2;
             ctx.beginPath();
-            ctx.roundRect(240, 1170, 600, 110, 24);
+            if (ctx.roundRect) ctx.roundRect(240, 1170, 600, 110, 24);
+            else ctx.rect(240, 1170, 600, 110);
             ctx.fill();
             ctx.stroke();
 
             const score = document.getElementById('vibeScoreNum').textContent;
-            ctx.fillStyle = '#00f3ff';
+            ctx.fillStyle = activeTheme.secondary;
             ctx.font = 'bold 46px Inter, sans-serif';
             ctx.fillText(`VIBE SCORE: ${score} / 100`, 540, 1240);
 
@@ -975,7 +1199,7 @@
             wrapText(ctx, `"${currentVibe.verdict}"`, 540, 1340, 780, 44);
 
             // Trending Song Tag
-            ctx.fillStyle = '#ff007f';
+            ctx.fillStyle = activeTheme.main;
             ctx.font = 'bold 28px Inter, sans-serif';
             ctx.fillText(`🎵 Sound: ${currentVibe.song}`, 540, 1550);
 
@@ -984,20 +1208,20 @@
             currentVibe.colors.forEach(hex => {
                 ctx.fillStyle = hex;
                 ctx.beginPath();
-                ctx.roundRect(startX, 1610, 100, 80, 16);
+                if (ctx.roundRect) ctx.roundRect(startX, 1610, 100, 80, 16);
+                else ctx.rect(startX, 1610, 100, 80);
                 ctx.fill();
                 ctx.strokeStyle = 'rgba(255,255,255,0.3)';
                 ctx.stroke();
                 startX += 120;
             });
 
-            // App Link / Watermark
+            // App Watermark
             ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
             ctx.font = '500 26px Inter, sans-serif';
             ctx.fillText('Check deinen Vibe auf vibecheck2026.app', 540, 1810);
         }
 
-        // Helper Canvas Text Wrapper
         function wrapText(context, text, x, y, maxWidth, lineHeight) {
             const words = text.split(' ');
             let line = '';
@@ -1016,7 +1240,7 @@
             context.fillText(line, x, currentY);
         }
 
-        // Download Image
+        // Download Image Action
         document.getElementById('downloadCanvasBtn').addEventListener('click', () => {
             const link = document.createElement('a');
             link.download = `VibeCheck_Story_Poster.png`;
@@ -1039,7 +1263,7 @@
                     });
                 } catch (err) {}
             } else {
-                alert("Teilen nicht direkt unterstützt – Bild herunterladen & posten!");
+                alert("Teilen nicht unterstützt – Lade das Bild herunter!");
             }
         });
     </script>
